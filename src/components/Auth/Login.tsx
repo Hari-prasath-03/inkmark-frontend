@@ -42,7 +42,9 @@ const Login: React.FC<AuthChildProps> = ({ closeAuthLay }) => {
 
   const { mutateAsync: verifyAndLogin, isPending: verifyingOtp } = useMutation({
     mutationFn: () => axiosInstance.post("/auth/login", loginDetials),
-    onSuccess: () => {
+    onSuccess: (response) => {
+      const token = response.data.data.token;
+      localStorage.setItem("authToken", token);
       setMessage(<span className="success-span">Logged in successfully</span>);
       setIsLoggedIn(true);
       setTimeout(() => closeAuthLay(), 2000);

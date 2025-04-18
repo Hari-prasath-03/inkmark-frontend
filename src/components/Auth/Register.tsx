@@ -45,7 +45,10 @@ const Signup: React.FC<AuthChildProps> = ({ closeAuthLay }) => {
   const { mutateAsync: verifyAndRegister, isPending: verifyingOtp } =
     useMutation({
       mutationFn: () => axiosInstance.post("/auth/register", registerDetials),
-      onSuccess: () => {
+      onSuccess: (response) => {
+        console.log(response);
+        const token = response.data.data.token;
+        localStorage.setItem("authToken", token);
         setMessage(<span className="success-span">Account created</span>);
         setIsLoggedIn(true);
         setTimeout(() => closeAuthLay(), 2000);
