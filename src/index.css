@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d6d5d5 #ececec;
+}
+
+.navlink.active {
+  @apply bg-indigo-100;
+}
+
+.hover-elavate {
+  @apply relative shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-150;
+}
+
+.page-title {
+  @apply font-outfit font-semibold text-lg pl-2 text-neutral-500;
+}
+
+.before-underline::before {
+  @apply content-[''] absolute -bottom-0 left-0 h-0.5 bg-indigo-500 transition-all duration-300 hover:w-full;
+}
+
+.success-span {
+  @apply text-green-600 font-nuniti text-sm block mt-2
+}
+
+.error-span {
+  @apply text-red-600 font-nuniti text-sm block mt-2
+}
+
+/* Animations */
+
+.animate-fromTop {
+  animation: fromTop 600ms forwards;
+}
+
+.animate-opacity {
+  animation: opacity 800ms ease-in-out;
+}
+
+.animate-fromRight {
+  animation: fromRight 600ms forwards;
+}
+
+@keyframes fromTop {
+  from {
+    transform: translateY(-50px);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fromRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@tailwind utilities;
